@@ -5,28 +5,70 @@ $msg = "";
 include('include/config.php');
 
 if (isset($_POST['loginbtn'])) {
+
     $email = trim($_POST['email']);
     $password = $_POST['password'];
+    $hashespas = password_hash($password, PASSWORD_BCRYPT);
+    $select = mysqli_query($con, "SELECT * FROM tbl_users WHERE email='$email' AND status='1'") or die(mysqli_error($con));
 
-    $select = mysqli_query($con, "SELECT * FROM admintbl WHERE email='" . trim($email) . "' OR 
-    username='" . trim($email) . "' AND status='1'") or die(mysqli_error($con));
+    
 
-    if (mysqli_num_rows($select) ==1) {
+    if ($_POST['type'] == "hod") {
+        if (mysqli_num_rows($select) ==1) {
         $row = mysqli_fetch_array($select);
-        $pass = $row['password'];
-        if ($pass == $password) {
-            $_SESSION['adid'] = $row['caid'];
-            $_SESSION['firstname'] = $row['firstname'];
-            $_SESSION['lastname'] = $row['lastname'];
-            $_SESSION['phonenumber'] = $row['phonenumber'];
-            $_SESSION['username'] = $row['username'];
+        $db_password = $row['password'];
+        if (password_verify(mysqli_real_escape_string($con, trim($_POST['password'])), $db_password)) {
+            $_SESSION['hodid'] = $row['uid'];
+            $_SESSION['firstname'] = $row['fname'];
+            $_SESSION['lastname'] = $row['lname'];
+            $_SESSION['phonenumber'] = $row['phoneNumber'];
+            $_SESSION['username'] = $row['userType'];
             $_SESSION['email'] = $row['email'];
-            header("location: dashboard.php");
+            header("location: hod/dashboard.php");
         }else {
             $error = "Password does not match with any of account , Please try again later!!";
         }
+        }else {
+            $error = "Invalid user credintials , Please try again later!!";
+        }
+    }elseif ($_POST['type'] == "hof") {
+        // if (mysqli_num_rows($select) ==1) {
+    //     $row = mysqli_fetch_array($select);
+    //     $pass = $row['password'];
+    //     if ($pass == $password) {
+    //         $_SESSION['adid'] = $row['caid'];
+    //         $_SESSION['firstname'] = $row['firstname'];
+    //         $_SESSION['lastname'] = $row['lastname'];
+    //         $_SESSION['phonenumber'] = $row['phonenumber'];
+    //         $_SESSION['username'] = $row['username'];
+    //         $_SESSION['email'] = $row['email'];
+    //         header("location: dashboard.php");
+    //     }else {
+    //         $error = "Password does not match with any of account , Please try again later!!";
+    //     }
+    // }else {
+    //     $error = "Invalid user credintials , Please try again later!!";
+    // }
+    }elseif ($_POST['type'] == "super") {
+        // if (mysqli_num_rows($select) ==1) {
+    //     $row = mysqli_fetch_array($select);
+    //     $pass = $row['password'];
+    //     if ($pass == $password) {
+    //         $_SESSION['adid'] = $row['caid'];
+    //         $_SESSION['firstname'] = $row['firstname'];
+    //         $_SESSION['lastname'] = $row['lastname'];
+    //         $_SESSION['phonenumber'] = $row['phonenumber'];
+    //         $_SESSION['username'] = $row['username'];
+    //         $_SESSION['email'] = $row['email'];
+    //         header("location: dashboard.php");
+    //     }else {
+    //         $error = "Password does not match with any of account , Please try again later!!";
+    //     }
+    // }else {
+    //     $error = "Invalid user credintials , Please try again later!!";
+    // }
     }else {
-        $error = "Invalid user credintials , Please try again later!!";
+        $error = "User Type Not Selected and It is Required !";
     }
 }
 
@@ -66,18 +108,18 @@ if (isset($_POST['loginbtn'])) {
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="col-xl-12 col-lg-12 col-md-9">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-8 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-4">
                                 <div class="p-5">
                                     <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Admin</h1>
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back To MCMF APP!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Staff</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back To SFYPM !</h1>
                                     </div>
                                     <!-- message -->
                                     <div class="col-sm-12">
@@ -97,6 +139,16 @@ if (isset($_POST['loginbtn'])) {
                                     </div>
                                     <!-- end of message -->
                                     <form class="user" method="POST">
+
+                                    <div class="form-group">
+                                            <select name="type" id="" class="form-control">
+                                                <option>Select your Type</option>
+                                                <option value="hod">HOD</option>
+                                                <option value="hof">HOF</option>
+                                                <option value="super">SUPERVISOR</option>
+                                            </select>
+                                        </div>
+
                                         <div class="form-group">
                                             <input type="text" name="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
@@ -111,7 +163,6 @@ if (isset($_POST['loginbtn'])) {
                                             <input type="submit" class="form-control btn btn-primary" name="loginbtn"
                                             value="Login">
                                         </div>
-                                        <hr>
                                         
                                     </form>
                                     <hr>

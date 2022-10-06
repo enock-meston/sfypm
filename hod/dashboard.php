@@ -1,9 +1,9 @@
 <?php
 session_start();
-include('include/config.php');
+include '../include/config.php';
 error_reporting(0);
 if (strlen($_SESSION['email']) == 0) {
-    header('location:index.php');
+    header('location: ../login.php');
 } else {
 
 ?>
@@ -19,7 +19,7 @@ if (strlen($_SESSION['email']) == 0) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>Admin-Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="../plugins/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,7 +29,7 @@ if (strlen($_SESSION['email']) == 0) {
 
     <!-- Custom styles for this template-->
     <link href="../plugins/css/sb-admin-2.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../plugins/img/mcmlogopng.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../plugins/img/logo.png" type="image/x-icon">
 </head>
 
 <body id="page-top">
@@ -37,7 +37,7 @@ if (strlen($_SESSION['email']) == 0) {
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-       <?php 
+        <?php 
             include 'include/sidebar.php';
        ?>
 
@@ -47,9 +47,9 @@ if (strlen($_SESSION['email']) == 0) {
             <!-- Main Content -->
             <div id="content">
 
-               
 
-                   <?php 
+
+                <?php 
                         include 'include/topbar.php'
                    ?>
 
@@ -59,7 +59,69 @@ if (strlen($_SESSION['email']) == 0) {
                     <!-- Content Row -->
                     <div class="row">
 
+                        <!-- Users -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
 
+                                        <div class="col mr-2">
+                                            <a href="#">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                    Users
+                                                </div>
+                                            </a>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <?php 
+                                                    $query = mysqli_query($con, "SELECT * from tbl_users WHERE status= 1");
+                                                    $countposts = mysqli_num_rows($query);
+                                                    ?>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                        <?php echo htmlentities($countposts); ?></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--  Student list-->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+
+                                        <div class="col mr-2">
+                                            <a href="#">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                    Student
+                                                </div>
+                                            </a>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <?php 
+                                                    $query = mysqli_query($con, "SELECT * from tbl_students WHERE status= 1");
+                                                    $countposts = mysqli_num_rows($query);
+                                                    ?>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                        <?php echo htmlentities($countposts); ?></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -69,7 +131,7 @@ if (strlen($_SESSION['email']) == 0) {
             <!-- End of Main Content -->
 
             <!-- Footer -->
-           <?php 
+            <?php 
                 include 'include/footer.php';
            ?>
             <!-- End of Footer -->
@@ -86,7 +148,7 @@ if (strlen($_SESSION['email']) == 0) {
     </a>
 
 
- 
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="../plugins/vendor/jquery/jquery.min.js"></script>

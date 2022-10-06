@@ -46,7 +46,7 @@ if (isset($_POST['loginbtn'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Login</title>
+    <title>Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="plugins/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

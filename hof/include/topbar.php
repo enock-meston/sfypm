@@ -52,7 +52,7 @@
          <li class="nav-item dropdown no-arrow">
              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
-                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['email']; ?></span>
+                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['hof_email']; ?></span>
                  <img class="img-profile rounded-circle" src="../plugins/img/undraw_profile.svg">
              </a>
              <!-- Dropdown - User Information -->
@@ -118,7 +118,7 @@
                  <br>
                  <hr>
                  <?php
-                 $hod_ID = $_SESSION['hodid'];
+                 $hof_ID = $_SESSION['hof_id'];
                         // update data 
                         if (isset($_POST['update'])) {
                             $fname = $_POST['fname'];
@@ -126,7 +126,7 @@
                             $phone = $_POST['phone'];
                             $email = $_POST['email'];
 
-                            if (mysqli_query($con,"UPDATE `tbl_users` SET `fname`='$fname',`lname`='$lname',`phoneNumber`='$phone' WHERE uid='$hod_ID'")) {
+                            if (mysqli_query($con,"UPDATE `tbl_users` SET `fname`='$fname',`lname`='$lname',`phoneNumber`='$phone' WHERE uid='$hof_ID'")) {
                                 $msg = "Edited";
                             }else {
                                 $error = "not edited";
@@ -135,7 +135,7 @@
                         }
                         // view user  data 
                         
-                        $query = mysqli_query($con,"SELECT * FROM `tbl_users` WHERE uid = '$hod_ID'");
+                        $query = mysqli_query($con,"SELECT * FROM `tbl_users` WHERE uid = '$hof_ID'");
                         while ($row = mysqli_fetch_assoc($query)) {
                             
                         

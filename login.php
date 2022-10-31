@@ -144,7 +144,7 @@ if (isset($_POST['loginbtn'])) {
                                             <select name="type" id="" class="form-control">
                                                 <option>Select your Type</option>
                                                 <option value="hod">HOD</option>
-                                                <option value="hof">HOF</option>
+                                                <option value="hof">Team Leader</option>
                                                 <option value="super">SUPERVISOR</option>
                                             </select>
                                         </div>
@@ -168,7 +168,7 @@ if (isset($_POST['loginbtn'])) {
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="index.php">Back to Home</a>
                                     </div>
                                 </div>
                             </div>

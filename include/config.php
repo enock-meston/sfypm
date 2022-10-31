@@ -24,8 +24,7 @@ function send_mail($subject,$content,$to){
     $countfiles='';
     $date=date("Y-m-d H:i:s");
     $send_status=0;
-        // connect db
-    
+        // connect db 
 //////////////////////////////////////////////////////// SEND Mail
 //Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -39,22 +38,15 @@ $mail->Username   = 'ndagijimanaenock11@outlook.com';                     //SMTP
 $mail->Password   = 'passtoenock@123';                               //SMTP password
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
 $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-
 //Recipients
 $mail->setFrom('ndagijimanaenock11@outlook.com');
 $mail->addAddress($to);                  //Name is optional
 $mail->addReplyTo('ndagijimanaenock11@outlook.com');
-
-
 //$body = mysqli_real_escape_string($con, $content);
-
 $mail->MsgHTML($content);
 $mail->isHTML(true);                                  //Set email format to HTML
 $mail->Subject = $subject;
-
-
 //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
 $mail->send();
 return 1;
 

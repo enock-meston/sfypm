@@ -1,2 +1,10 @@
 primary color = #ec7710
 
+databseName = sfypm_db
+
+Tables:
+=======
+    -tblprojectcanvas
+    -tbl_group
+    -tbl_students
+    -tbl_users

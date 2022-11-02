@@ -39,6 +39,7 @@
             <h6 class="collapse-header">Customization</h6>
             <a class="collapse-item" href="user.php" title="Add  and View user">User</a>
             <a class="collapse-item" href="student.php" title="Add and View Student">Student</a>
+            <a class="collapse-item" href="groups.php" title="Assign groups to Supervisor">Groups</a>
         </div>
     </div>
 </li>

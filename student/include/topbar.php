@@ -6,7 +6,7 @@
          <i class="fa fa-bars"></i>
      </button>
      <i class="fas fa-phone fa-sm text-gray-400"></i>
-     <a class="nav-link" href="#">
+     <a class="nav-link" href="chat.php">
                 Chat with Suppervisor
             </a>
      <!-- Topbar Search -->

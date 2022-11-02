@@ -117,7 +117,7 @@ if (isset($_POST['loginbtn'])) {
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="index.php">Back to Home</a>
+                                        <a class="small" href="../index.php">Back to Home</a>
                                     </div>
                                 </div>
                             </div>

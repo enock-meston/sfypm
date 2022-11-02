@@ -68,22 +68,22 @@ if (strlen($_SESSION['email']) == 0) {
         <div class="row clearfix" >
 
             <div class="card">
-                <div class="chat" style="overflow-y: scroll; height:400px;">
-                    <div class="chat-header clearfix">
-                        <div class="row">
+                <div class="chat" >
+                    <div class="chat-header clearfix" >
+                        <div class="row" >
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12" >
                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
                                 </a>
                                 <div class="chat-about">
-                                    <h6 class="m-b-0">Aiden Chavez</h6>
-                                    <small>Last seen: 2 hours ago</small>
+                                    <h6 class="m-b-0"><?php echo $_SESSION['firstname'] . " ". $_SESSION['lastname'];?></h6>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="chat-history">
+                    <div class="chat-history" style="overflow-y: scroll; height:400px;">
                         <?php
                              $myId = $_SESSION['sID'];
                              // // select my superVisor 

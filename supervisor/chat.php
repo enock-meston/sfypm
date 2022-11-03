@@ -13,19 +13,51 @@ if (strlen($_SESSION['super_email']) == 0) {
     if (isset($_POST['send'])) {
                         
         $messageTXT = $_POST['messageTXT'];
-        $studentId = $_SESSION['super_id'];
+        $studentId = $_GET['reply'];
         // // select my superVisor 
-        $supervisorQuery = mysqli_query($con,"SELECT * FROM `tbl_group` WHERE studentOne = '$studentId' OR studentTwo ='$studentId'");
-        $supervisor = mysqli_fetch_assoc($supervisorQuery);
-        $supervisorID = $supervisor['superVisorID'];
+        // $supervisorQuery = mysqli_query($con,"SELECT * FROM `tbl_group` WHERE 
+        // studentOne = '$studentId' OR studentTwo ='$studentId'");
+        // $supervisor = mysqli_fetch_assoc($supervisorQuery);
+        // $supervisorID = $supervisor['superVisorID'];
+        $supervisorID = $_SESSION['super_id'];
 
-        $SQLMessage = mysqli_query($con,"INSERT INTO `tbl_message`(`memberID`, `userId`, `messageMember`,`status`) 
+
+        // check if supervisor message is empt
+        $messageQuery = mysqli_query($con,"SELECT * FROM tbl_message WHERE 
+        userId = '".$_SESSION['super_id']."' AND memberID ='$studentId'");
+
+        $getEmptData = mysqli_fetch_assoc($messageQuery);
+        $emptMessage = $getEmptData['messageUser'];
+        if ($emptMessage == "" OR $emptMessage == null) {
+            // making update
+            $SQLMessageUpdate = mysqli_query($con,"UPDATE `tbl_message` SET `messageUser`='$messageTXT',`status`='2' WHERE 
+            (userId = '".$_SESSION['super_id']."' AND memberID ='$studentId') AND status=1");
+        
+         if($SQLMessageUpdate) {
+            $msg = "replayed";
+         } else {
+            $error = "not sent";
+         }
+
+        } else { 
+            // insert isazwe
+            $SQLMessage = mysqli_query($con,"INSERT INTO `tbl_message`(`memberID`, 
+        `userId`, `messageMember`,`status`) 
         VALUES ('$studentId','$supervisorID','$messageTXT','1')");
          if($SQLMessage) {
             $msg = "sent";
          } else {
             $error = "not sent";
          }
+        }
+        
+
+
+
+
+
+
+       
      
     }
     ?>
@@ -135,7 +167,8 @@ if (strlen($_SESSION['super_email']) == 0) {
                                     <span
                                         class="message-data-time"><?php echo $rowData['slname']. " ".$rowData['sfname'];?></span>
                                 </div>
-                                <div class="message other-message float-right"><?php echo $rowUserMessage['messageUser'];?></div>
+                                <div class="message other-message float-right">
+                                    <?php echo $rowUserMessage['messageUser'];?></div>
                             </li>
 
 

@@ -31,18 +31,18 @@ if (isset($_POST['loginbtn'])) {
         }else {
             $error = "Invalid user credintials , Please try again later!!";
         }
-    }elseif ($_POST['type'] == "hof") {
+    }elseif ($_POST['type'] == "tml") {
         if (mysqli_num_rows($select) ==1) {
             $row = mysqli_fetch_array($select);
             $db_password = $row['password'];
         if (password_verify(mysqli_real_escape_string($con, trim($_POST['password'])), $db_password)) {
-            $_SESSION['hof_id'] = $row['uid'];
-            $_SESSION['hof_firstname'] = $row['fname'];
-            $_SESSION['hof_lastname'] = $row['lname'];
-            $_SESSION['hof_phonenumber'] = $row['phoneNumber'];
-            $_SESSION['hof_type'] = $row['userType'];
-            $_SESSION['hof_email'] = $row['email'];
-            header("location: hof/dashboard.php");
+            $_SESSION['tml_id'] = $row['uid'];
+            $_SESSION['tml_firstname'] = $row['fname'];
+            $_SESSION['tml_lastname'] = $row['lname'];
+            $_SESSION['tml_phonenumber'] = $row['phoneNumber'];
+            $_SESSION['tml_type'] = $row['userType'];
+            $_SESSION['tml_email'] = $row['email'];
+            header("location: tml/dashboard.php");
         }else {
             $error = "Password does not match with any of account , Please try again later!!";
         }
@@ -144,7 +144,7 @@ if (isset($_POST['loginbtn'])) {
                                             <select name="type" id="" class="form-control">
                                                 <option>Select your Type</option>
                                                 <option value="hod">HOD</option>
-                                                <option value="hof">Team Leader</option>
+                                                <option value="tml">Team Leader</option>
                                                 <option value="super">SUPERVISOR</option>
                                             </select>
                                         </div>

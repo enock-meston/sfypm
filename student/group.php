@@ -91,7 +91,27 @@ if (strlen($_SESSION['sID']) == 0) {
                         $sqlGroup = mysqli_query($con,"SELECT * FROM tbl_group LEFT JOIN tbl_students ON 
                         tbl_group.studentOne = tbl_students.sID OR tbl_group.studentTwo = tbl_students.sID 
                         WHERE tbl_group.studentOne = '".$_SESSION['sID']."' OR tbl_group.studentTwo = '".$_SESSION['sID']."'");
+                        
+                      
+
+                        $gn = $_SESSION['gn'];
+                                    $selectSupervisor = mysqli_query($con,"SELECT tbl_group.superVisorID as SID,
+                                    tbl_users.fname as FN,tbl_users.lname as LN, tbl_group.groupNumber as GRN 
+                                    from tbl_group LEFT JOIN tbl_users ON tbl_users.uid = tbl_group.superVisorID 
+                                    WHERE tbl_group.groupNumber='$gn'");
+                                    $data = mysqli_fetch_array($selectSupervisor);
+                                    if ($data['LN'] == "" || $data['FN'] == "" || $data['LN'] == null || $data['FN'] == null) {
+                                        echo "Not Yet being given a Supervisor";
+                                    } else {
+                                        
+                                        echo "OUR SUPERVISOR: ". $data['LN'] ." ".$data['FN'];
+                                    }
+                                    
+                                    
+                                    // echo $_SESSION['gn'];
+
                         while ($row=mysqli_fetch_array($sqlGroup)) {
+                           $_SESSION['gn'] =$row['groupNumber'];
                             ?>
                             <tr>
                                 <td><?php echo $row['groupNumber'];?></td>

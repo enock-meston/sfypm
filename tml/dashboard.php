@@ -2,7 +2,7 @@
 session_start();
 include '../include/config.php';
 error_reporting(0);
-if (strlen($_SESSION['hof_email']) == 0) {
+if (strlen($_SESSION['tml_email']) == 0) {
     header('location: ../login.php');
 } else {
 
@@ -19,7 +19,7 @@ if (strlen($_SESSION['hof_email']) == 0) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>HOF-Dashboard</title>
+    <title>TML-Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="../plugins/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

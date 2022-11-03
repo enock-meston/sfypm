@@ -6,7 +6,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">MCMF<sup>APP</sup></div>
+    <div class="sidebar-brand-text mx-3">SFYPM<sup>WEB</sup></div>
 </a>
 
 <!-- Divider -->
@@ -24,48 +24,26 @@
 
 <!-- Heading -->
 <div class="sidebar-heading">
-    Market
+    Pachages
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
         aria-expanded="true" aria-controls="collapseThree">
-        <i class="fas fa-fw fa-plus"></i>
-        <span>User</span>
+        <i class="fas fa-fw fa-list"></i>
+        <span>Action</span>
     </a>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Customization</h6>
-            <a class="collapse-item" href="user.php" title="Add  and View user">User</a>
-            <a class="collapse-item" href="student.php" title="Add and View Student">Student</a>
+            <a class="collapse-item" href="add-previous-project.php" title="Add  and approve Project">Prevoius Project</a>
+            <a class="collapse-item" href="pending-project.php" title="View Pending">Pending Project</a>
+            <a class="collapse-item" href="approved-project.php" title="View Approved">Approved Project</a>
+        
         </div>
     </div>
 </li>
-
-
-<!-- Heading -->
-<div class="sidebar-heading">
-    Action
-</div>
-
-<!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-        aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-list"></i>
-        <span>Request</span>
-    </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Cashier:</h6>
-            <a class="collapse-item" href="cashier.php">Cashier</a>
-        </div>
-    </div>
-</li>
-
-
-
 
 
 <!-- Divider -->

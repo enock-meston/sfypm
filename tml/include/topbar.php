@@ -6,18 +6,7 @@
          <i class="fa fa-bars"></i>
      </button>
 
-     <!-- Topbar Search -->
-     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-         <div class="input-group">
-             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                 aria-label="Search" aria-describedby="basic-addon2">
-             <div class="input-group-append">
-                 <button class="btn btn-primary" type="button">
-                     <i class="fas fa-search fa-sm"></i>
-                 </button>
-             </div>
-         </div>
-     </form>
+     
      <!-- Topbar Navbar -->
      <ul class="navbar-nav ml-auto">
 
@@ -30,17 +19,7 @@
              <!-- Dropdown - Messages -->
              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                  aria-labelledby="searchDropdown">
-                 <form class="form-inline mr-auto w-100 navbar-search">
-                     <div class="input-group">
-                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                             aria-label="Search" aria-describedby="basic-addon2">
-                         <div class="input-group-append">
-                             <button class="btn btn-primary" type="button">
-                                 <i class="fas fa-search fa-sm"></i>
-                             </button>
-                         </div>
-                     </div>
-                 </form>
+                
              </div>
          </li>
 
@@ -52,7 +31,7 @@
          <li class="nav-item dropdown no-arrow">
              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
-                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['hof_email']; ?></span>
+                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['tml_email']; ?></span>
                  <img class="img-profile rounded-circle" src="../plugins/img/undraw_profile.svg">
              </a>
              <!-- Dropdown - User Information -->
@@ -118,7 +97,7 @@
                  <br>
                  <hr>
                  <?php
-                 $hof_ID = $_SESSION['hof_id'];
+                 $super_ID = $_SESSION['tml_id'];
                         // update data 
                         if (isset($_POST['update'])) {
                             $fname = $_POST['fname'];
@@ -126,7 +105,7 @@
                             $phone = $_POST['phone'];
                             $email = $_POST['email'];
 
-                            if (mysqli_query($con,"UPDATE `tbl_users` SET `fname`='$fname',`lname`='$lname',`phoneNumber`='$phone' WHERE uid='$hof_ID'")) {
+                            if (mysqli_query($con,"UPDATE `tbl_users` SET `fname`='$fname',`lname`='$lname',`phoneNumber`='$phone' WHERE uid='$super_ID'")) {
                                 $msg = "Edited";
                             }else {
                                 $error = "not edited";
@@ -135,7 +114,7 @@
                         }
                         // view user  data 
                         
-                        $query = mysqli_query($con,"SELECT * FROM `tbl_users` WHERE uid = '$hof_ID'");
+                        $query = mysqli_query($con,"SELECT * FROM `tbl_users` WHERE uid = '$super_ID'");
                         while ($row = mysqli_fetch_assoc($query)) {
                             
                         
@@ -151,7 +130,7 @@
                          <input type="text" name="phone" value="<?php echo $row['phoneNumber'];?>" class="form-control">
                      </div>
                      <div class="form-group">
-                         <input type="text" name="email" value="<?php echo $row['email'];?>" class="form-control">
+                         <input type="text" readonly name="email" value="<?php echo $row['email'];?>" class="form-control">
                      </div>
                      <div class="form-group">
                          <input type="submit" class="btn btn-primary" name="update" value="Edit">

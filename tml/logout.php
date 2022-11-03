@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("../include/config.php");
-$_SESSION['hof_email']=="";
+// include("../include/config.php");
+$_SESSION['tml_email']=="";
 session_unset();
 session_destroy();
 

@@ -6,7 +6,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">MCMF<sup>APP</sup></div>
+    <div class="sidebar-brand-text mx-3">SFYPM<sup>WEB</sup></div>
 </a>
 
 <!-- Divider -->
@@ -24,7 +24,7 @@
 
 <!-- Heading -->
 <div class="sidebar-heading">
-    Market
+    Actions
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
@@ -32,41 +32,16 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
         aria-expanded="true" aria-controls="collapseThree">
         <i class="fas fa-fw fa-plus"></i>
-        <span>User</span>
+        <span>Views</span>
     </a>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Customization</h6>
-            <a class="collapse-item" href="user.php" title="Add  and View user">User</a>
-            <a class="collapse-item" href="student.php" title="Add and View Student">Student</a>
+            <a class="collapse-item" href="View-messages.php" title="chatting">Messages</a>
+            <a class="collapse-item" href="viewStudentWithProject.php" title="student and thier Project">Student && project</a>
         </div>
     </div>
 </li>
-
-
-<!-- Heading -->
-<div class="sidebar-heading">
-    Action
-</div>
-
-<!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-        aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-list"></i>
-        <span>Request</span>
-    </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Cashier:</h6>
-            <a class="collapse-item" href="cashier.php">Cashier</a>
-        </div>
-    </div>
-</li>
-
-
-
-
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

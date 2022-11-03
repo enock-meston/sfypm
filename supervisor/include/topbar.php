@@ -118,7 +118,7 @@
                  <br>
                  <hr>
                  <?php
-                 $hod_ID = $_SESSION['super_id'];
+                 $super_ID = $_SESSION['super_id'];
                         // update data 
                         if (isset($_POST['update'])) {
                             $fname = $_POST['fname'];
@@ -126,7 +126,7 @@
                             $phone = $_POST['phone'];
                             $email = $_POST['email'];
 
-                            if (mysqli_query($con,"UPDATE `tbl_users` SET `fname`='$fname',`lname`='$lname',`phoneNumber`='$phone' WHERE uid='$hod_ID'")) {
+                            if (mysqli_query($con,"UPDATE `tbl_users` SET `fname`='$fname',`lname`='$lname',`phoneNumber`='$phone' WHERE uid='$super_ID'")) {
                                 $msg = "Edited";
                             }else {
                                 $error = "not edited";
@@ -135,7 +135,7 @@
                         }
                         // view user  data 
                         
-                        $query = mysqli_query($con,"SELECT * FROM `tbl_users` WHERE uid = '$hod_ID'");
+                        $query = mysqli_query($con,"SELECT * FROM `tbl_users` WHERE uid = '$super_ID'");
                         while ($row = mysqli_fetch_assoc($query)) {
                             
                         
@@ -151,7 +151,7 @@
                          <input type="text" name="phone" value="<?php echo $row['phoneNumber'];?>" class="form-control">
                      </div>
                      <div class="form-group">
-                         <input type="text" name="email" value="<?php echo $row['email'];?>" class="form-control">
+                         <input type="text" readonly name="email" value="<?php echo $row['email'];?>" class="form-control">
                      </div>
                      <div class="form-group">
                          <input type="submit" class="btn btn-primary" name="update" value="Edit">

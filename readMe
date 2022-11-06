@@ -8,3 +8,10 @@ Tables:
     -tbl_group
     -tbl_students
     -tbl_users
+
+
+status 
+======
+1 = pending 
+2 = approved
+0 = rejicted

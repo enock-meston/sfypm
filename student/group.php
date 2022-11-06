@@ -95,6 +95,7 @@ if (strlen($_SESSION['sID']) == 0) {
                       
 
                         $gn = $_SESSION['gn'];
+
                                     $selectSupervisor = mysqli_query($con,"SELECT tbl_group.superVisorID as SID,
                                     tbl_users.fname as FN,tbl_users.lname as LN, tbl_group.groupNumber as GRN 
                                     from tbl_group LEFT JOIN tbl_users ON tbl_users.uid = tbl_group.superVisorID 
@@ -106,6 +107,7 @@ if (strlen($_SESSION['sID']) == 0) {
                                         
                                         echo "OUR SUPERVISOR: ". $data['LN'] ." ".$data['FN'];
                                     }
+                                    
                                     
                                     
                                     // echo $_SESSION['gn'];

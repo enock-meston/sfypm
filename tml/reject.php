@@ -104,7 +104,7 @@ if (strlen($_SESSION['tml_email']) == 0) {
                                     $sql = mysqli_query($con,"INSERT INTO `tbl_comment`(`postCanvasID`, `comment`,`status`) 
                                     VALUES ('$id','$comment','1')");
                                     if ($comment) {
-                                        $update = mysqli_query($con,"UPDATE `tblprojectcanvas` SET `Status`='2' WHERE cid='$id'");
+                                        $update = mysqli_query($con,"UPDATE `tblprojectcanvas` SET `Status`='0' WHERE cid='$id'");
                                         if ($update) {
                                             $msg ="sent";
                                         }else {

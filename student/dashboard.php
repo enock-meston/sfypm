@@ -58,6 +58,59 @@ if (strlen($_SESSION['sID']) == 0) {
 
                     <!-- Content Row -->
                     <div class="row">
+                    <div class="card shadow mb-12">
+                        <div class="card-header py-12">
+                            <h6 class="m-0 font-weight-bold text-primary"> New Comment</h6>
+                        </div>
+                        <div class="card-body">
+                            <?php
+                            $MyId = $_SESSION['sID'];
+
+                            // get groupID
+                                $groupNumber = mysqli_query($con,"SELECT * FROM `tbl_group` WHERE 
+                                studentOne='$MyId' OR studentTwo='$MyId'");
+                                $rowData = mysqli_fetch_array($groupNumber);
+                                $groupID = $rowData['gid'];
+                                $groupNumber = $rowData['groupNumber'];
+                                // 
+                                $selectCanvasID = mysqli_query($con,"SELECT * FROM `tblprojectcanvas` 
+                                WHERE groupNumber='$groupNumber'");
+                                $rowCanvas= mysqli_fetch_array($selectCanvasID);
+                                $canvasID = $rowCanvas['cid'];
+
+                                // select comment
+                                $selectComment = mysqli_query($con,"SELECT * FROM `tbl_comment` WHERE postCanvasID='$canvasID'");
+                                $rowComment= mysqli_fetch_array($selectComment);
+                                $Comment = $rowComment['comment'];
+                            ?>
+
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Comment:
+                                </div>
+                                <div class="card-body">
+                                    <?php 
+                                    
+                                    echo $Comment ."<br>"; 
+                                    
+                                    if ($Comment != "" || $Comment != null) {
+                                      ?>
+                                        <a href="correct.php?proID=<?php echo $canvasID;?>">Edit your Canvas</a>
+                                      <?php  
+                                    }else {
+                                        echo  "... Status Ok...";
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+
+                            <?php
+                                // }
+                            ?>
+                        </div>
+                        <!--end mesages  tables -->
+
+                    </div>
                     </div>
 
                 </div>

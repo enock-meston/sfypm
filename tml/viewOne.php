@@ -96,70 +96,72 @@ if (strlen($_SESSION['tml_email']) == 0) {
 
                     <div class="card shadow col-sm-12">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"> <?php echo $data['title'] ." FROM ". $data['groupNumber'];?></h6>
+                            <h6 class="m-0 font-weight-bold text-primary">
+                                <?php echo $data['title'] ." FROM ". $data['groupNumber'];?></h6>
                         </div>
                         <div class="card-body">
-                        <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <tr>
-                                            <th>Problem
-                                                <textarea readonly placeholder="<?php echo $data['Problem'];?>" class="form-control" id="form4Example3"
-                                                    rows="4"></textarea>
-                                            </th>
-                                            <th>Solution
-                                                <textarea readonly placeholder="<?php echo $data['Solution'];?>" class="form-control" id="form4Example3"
-                                                    rows="4"></textarea>
-                                            </th>
-                                            <th>Unique Value Proposition
-                                                <textarea readonly placeholder="<?php echo $data['UniqueValueProposition'];?>" class="form-control"
-                                                    id="form4Example3" rows="4"></textarea>
-                                            </th>
-                                            <th>Unfair Advantage
-                                                <textarea readonly placeholder="<?php echo $data['UnfairAdvantage'];?>" class="form-control" id="form4Example3"
-                                                    rows="4"></textarea>
-                                            </th>
-                                            <th>Customer Segments
-                                                <textarea readonly placeholder="<?php echo $data['CustomerSegments'];?>" class="form-control"
-                                                    id="form4Example3" rows="4"></textarea>
-                                            </th>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <tr>
+                                        <th>Problem
+                                            <textarea readonly placeholder="<?php echo $data['Problem'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </th>
+                                        <th>Solution
+                                            <textarea readonly placeholder="<?php echo $data['Solution'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </th>
+                                        <th>Unique Value Proposition
+                                            <textarea readonly
+                                                placeholder="<?php echo $data['UniqueValueProposition'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </th>
+                                        <th>Unfair Advantage
+                                            <textarea readonly placeholder="<?php echo $data['UnfairAdvantage'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </th>
+                                        <th>Customer Segments
+                                            <textarea readonly placeholder="<?php echo $data['CustomerSegments'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </th>
 
-                                        </tr>
-                                        <tr>
-                                            <td>Existing Alternatives
-                                                <textarea readonly placeholder="<?php echo $data['ExistingAlternatives'];?>" class="form-control"
-                                                    id="form4Example3" rows="4"></textarea>
-                                            </td>
-                                            <td>Key Metrics
-                                                <textarea readonly placeholder="<?php echo $data['KeyMetrics'];?>" class="form-control" id="form4Example3"
-                                                    rows="4"></textarea>
-                                            </td>
-                                            <td>High-Level Concept
-                                                <textarea readonly placeholder="<?php echo $data['HighLevelConcept'];?>" class="form-control"
-                                                    id="form4Example3" rows="4"></textarea>
-                                            </td>
-                                            <td>Channels
-                                                <textarea readonly placeholder="<?php echo $data['Channels'];?>" class="form-control" id="form4Example3"
-                                                    rows="4"></textarea>
-                                            </td>
-                                            <td>Early Adopters
-                                                <textarea readonly placeholder="<?php echo $data['EarlyAdopters'];?>" class="form-control" id="form4Example3"
-                                                    rows="4"></textarea>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cost Structure
-                                                <textarea readonly placeholder="<?php echo $data['CostStructure'];?>" class="form-control" id="form4Example3"
-                                                    rows="4"></textarea>
-                                            </td>
-                                            <td>Revenue Structure
-                                                <textarea readonly placeholder="<?php echo $data['RevenueStructure'];?>" class="form-control"
-                                                    id="form4Example3" rows="4"></textarea>
-                                            </td>
-                                        </tr>
+                                    </tr>
+                                    <tr>
+                                        <td>Existing Alternatives
+                                            <textarea readonly placeholder="<?php echo $data['ExistingAlternatives'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </td>
+                                        <td>Key Metrics
+                                            <textarea readonly placeholder="<?php echo $data['KeyMetrics'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </td>
+                                        <td>High-Level Concept
+                                            <textarea readonly placeholder="<?php echo $data['HighLevelConcept'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </td>
+                                        <td>Channels
+                                            <textarea readonly placeholder="<?php echo $data['Channels'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </td>
+                                        <td>Early Adopters
+                                            <textarea readonly placeholder="<?php echo $data['EarlyAdopters'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cost Structure
+                                            <textarea readonly placeholder="<?php echo $data['CostStructure'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </td>
+                                        <td>Revenue Structure
+                                            <textarea readonly placeholder="<?php echo $data['RevenueStructure'];?>"
+                                                class="form-control" id="form4Example3" rows="4"></textarea>
+                                        </td>
+                                    </tr>
 
 
-                                    </table>
-                                </div>
+                                </table>
+                            </div>
                         </div>
                         <!--end USERS  tables -->
 

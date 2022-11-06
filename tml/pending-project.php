@@ -30,6 +30,19 @@ if (strlen($_SESSION['tml_email']) == 0) {
             
         }
     }
+
+
+    if ($_GET['appr']) {
+       $id = $_GET['appr'];
+       $aproveQuery= mysqli_query($con,"UPDATE `tblprojectcanvas` SET `Status`='1' WHERE cid ='$id'");
+       if ($aproveQuery) {
+        $msg = "approved";
+       } else {
+        $error = "Query Problem";
+       }
+    }
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -157,9 +170,13 @@ if (strlen($_SESSION['tml_email']) == 0) {
                                             <td><?php echo $row1['title'];?></td>
                                             <td><?php echo $row1['groupNumber'];?></td>
                                             <td>
-                                                <a href="viewOne.php?on=<?php echo $row1['cid'] ;?>" class="badge badge-secondary"> <i class='fas fa-eye' style='font-size:20px;color:red'></i> view</a>
-                                                <a href="pending-project.php?appr=<?php echo $row1['cid'] ;?>" class="badge badge-success">approve</a>
-                                                <a href="reject.php?rej=<?php echo $row1['cid'] ;?>" class="badge badge-danger">reject</a>
+                                                <a href="viewOne.php?on=<?php echo $row1['cid'] ;?>"
+                                                    class="badge badge-secondary"> <i class='fas fa-eye'
+                                                        style='font-size:20px;color:red'></i> view</a>
+                                                <a href="pending-project.php?appr=<?php echo $row1['cid'] ;?>"
+                                                    class="badge badge-success">approve</a>
+                                                <a href="reject.php?rej=<?php echo $row1['cid'] ;?>"
+                                                    class="badge badge-danger">reject</a>
                                             </td>
                                         </tr>
                                         <?php

@@ -10,7 +10,41 @@ if (strlen($_SESSION['sID']) == 0) {
 } else {
 
 
-    
+    if(isset($_POST['updateBtn']))
+    {
+        $projectID = $_GET['proID'];
+        $title = $_POST['title'];
+        $Problem = $_POST['Problem'];
+        $Solution = $_POST['Solution'];
+        $UniqueValueProposition = $_POST['UniqueValueProposition'];
+        $UnfairAdvantage = $_POST['UnfairAdvantage'];
+        $CustomerSegments = $_POST['CustomerSegments'];
+        $ExistingAlternatives = $_POST['ExistingAlternatives'];
+        $KeyMetrics = $_POST['KeyMetrics'];
+        $HighLevelConcept = $_POST['HighLevelConcept'];
+        $Channels = $_POST['Channels'];
+        $EarlyAdopters = $_POST['EarlyAdopters'];
+        $CostStructure = $_POST['CostStructure'];
+        $RevenueStructure = $_POST['RevenueStructure'];
+        $Status = 1;
+        $proID = $_POST['proID'];
+
+            // $groupNumber =date('i').rand(1000,9999);
+            if (mysqli_query($con,"UPDATE `tblprojectcanvas` SET 
+            `title`='$title',`Problem`='$Problem',`Solution`='$Solution',`UniqueValueProposition`='$UniqueValueProposition',
+            `UnfairAdvantage`='$UnfairAdvantage',`CustomerSegments`='$CustomerSegments',
+            `ExistingAlternatives`='$ExistingAlternatives',`KeyMetrics`='$KeyMetrics',
+            `HighLevelConcept`='$HighLevelConcept',`Channels`='$Channels',`EarlyAdopters`='$EarlyAdopters',
+            `CostStructure`='$CostStructure',`RevenueStructure`='$RevenueStructure',`Status`='$Status' 
+            WHERE cid='$projectID'")) {
+                $msg = "Canvas Updated";
+                mysqli_query($con,"DELETE FROM `tbl_comment` WHERE postCanvasID = '$proID'");
+
+            } else {
+                $error ="Query Problem";
+            }
+      
+        }
 ?>
 
 <!DOCTYPE html>
@@ -101,60 +135,62 @@ if (strlen($_SESSION['sID']) == 0) {
                         </div>
                         <div class="card-body">
                             <form action="" method="POST">
+                                <input type="text" name="title" class="form-control" value="<?php echo $data['title'];?>">
+                                <input type="hidden" name="proID" class="form-control" value="<?php echo $projectID;?>">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <tr>
                                             <th>Problem
-                                                <textarea name="<?php echo $data['Problem'];?>"
+                                                <textarea name="Problem"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['Problem'];?></textarea>
                                             </th>
                                             <th>Solution
-                                                <textarea name="<?php echo $data['Solution'];?>"
+                                                <textarea name="Solution"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['Solution'];?></textarea>
                                             </th>
                                             <th>Unique Value Proposition
-                                                <textarea name="<?php echo $data['UniqueValueProposition'];?>"
+                                                <textarea name="UniqueValueProposition"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['UniqueValueProposition'];?></textarea>
                                             </th>
                                             <th>Unfair Advantage
-                                                <textarea name="<?php echo $data['UnfairAdvantage'];?>"
+                                                <textarea name="UnfairAdvantage"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['UnfairAdvantage'];?></textarea>
                                             </th>
                                             <th>Customer Segments
-                                                <textarea name="<?php echo $data['CustomerSegments'];?>"
+                                                <textarea name="CustomerSegments"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['CustomerSegments'];?></textarea>
                                             </th>
 
                                         </tr>
                                         <tr>
                                             <td>Existing Alternatives
-                                                <textarea name="<?php echo $data['ExistingAlternatives'];?>"
+                                                <textarea name="ExistingAlternatives"
                                                     class="form-control" id="form4Example3" rows="4"> <?php echo $data['ExistingAlternatives'];?></textarea>
                                             </td>
                                             <td>Key Metrics
-                                                <textarea name="<?php echo $data['KeyMetrics'];?>"
+                                                <textarea name="KeyMetrics"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['KeyMetrics'];?></textarea>
                                             </td>
                                             <td>High-Level Concept
-                                                <textarea name="<?php echo $data['HighLevelConcept'];?>"
+                                                <textarea name="HighLevelConcept"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['HighLevelConcept'];?></textarea>
                                             </td>
                                             <td>Channels
-                                                <textarea name="<?php echo $data['Channels'];?>"
+                                                <textarea name="Channels"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['Channels'];?></textarea>
                                             </td>
                                             <td>Early Adopters
-                                                <textarea name="<?php echo $data['EarlyAdopters'];?>"
+                                                <textarea name="EarlyAdopters"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['EarlyAdopters'];?></textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Cost Structure
-                                                <textarea name="<?php echo $data['CostStructure'];?>"
+                                                <textarea name="CostStructure"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['CostStructure'];?></textarea>
                                             </td>
                                             <td>Revenue Structure
-                                                <textarea name="<?php echo $data['RevenueStructure'];?>"
+                                                <textarea name="RevenueStructure"
                                                     class="form-control" id="form4Example3" rows="4"><?php echo $data['RevenueStructure'];?></textarea>
                                             </td>
 
@@ -215,5 +251,5 @@ if (strlen($_SESSION['sID']) == 0) {
 </html>
 
 <?php 
-    } 
+        }
 ?>

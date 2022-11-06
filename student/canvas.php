@@ -56,7 +56,7 @@ if (strlen($_SESSION['sID']) == 0) {
             
         }//
     }
-    }
+}
 ?>
 
 <!DOCTYPE html>

@@ -17,7 +17,7 @@ if (strlen($_SESSION['email']) == 0) {
         if ($type == "") {
             $error = "please Select user Type";
         }else {
-            $hashpassword=password_hash($password, PASSWORD_BCRYPT);
+            $hashpassword=password_hash($password, PASSWORD_BCRYPT); // password aho ihindukira encrepted
             $query = mysqli_query($con,"INSERT INTO `tbl_users`(`email`, `password`, `userType`, `status`) 
             VALUES ('$email','$hashpassword','$type','1')");
             if ($query) {
@@ -236,7 +236,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <select name="type" id="" class="form-control">
                                                 <option value="">Select user Type</option>
-                                                <option value="HOF">HOF</option>
+                                                <option value="HOF">Project Team Leader</option>
                                                 <option value="super">SUPERVISOR</option>
                                             </select>
                                         </div>

@@ -236,7 +236,7 @@ if (strlen($_SESSION['email']) == 0) {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <select name="type" id="" class="form-control">
                                                 <option value="">Select user Type</option>
-                                                <option value="HOF">HOF</option>
+                                                <option value="HOF">Project Team Leader</option>
                                                 <option value="super">SUPERVISOR</option>
                                             </select>
                                         </div>

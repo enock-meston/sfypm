@@ -34,7 +34,7 @@ if (strlen($_SESSION['tml_email']) == 0) {
 
     if ($_GET['appr']) {
        $id = $_GET['appr'];
-       $aproveQuery= mysqli_query($con,"UPDATE `tblprojectcanvas` SET `Status`='1' WHERE cid ='$id'");
+       $aproveQuery= mysqli_query($con,"UPDATE `tblprojectcanvas` SET `Status`='2' WHERE cid ='$id'");
        if ($aproveQuery) {
         $msg = "approved";
        } else {
@@ -154,7 +154,7 @@ if (strlen($_SESSION['tml_email']) == 0) {
 
                                         <tr>
                                             <?php 
-                                            $query = mysqli_query($con,"SELECT * FROM `tblprojectcanvas` WHERE Status=0");
+                                            $query = mysqli_query($con,"SELECT * FROM `tblprojectcanvas` WHERE Status=1 OR Status=0");
                                             if (mysqli_num_rows($query)<=0) {
                                                 ?>
                                             <h1 style="color: red;">No data Founds !</h1>

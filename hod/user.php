@@ -17,7 +17,7 @@ if (strlen($_SESSION['email']) == 0) {
         if ($type == "") {
             $error = "please Select user Type";
         }else {
-            $hashpassword=password_hash($password, PASSWORD_BCRYPT);
+            $hashpassword=password_hash($password, PASSWORD_BCRYPT); // password aho ihindukira encrepted
             $query = mysqli_query($con,"INSERT INTO `tbl_users`(`email`, `password`, `userType`, `status`) 
             VALUES ('$email','$hashpassword','$type','1')");
             if ($query) {

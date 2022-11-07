@@ -126,7 +126,7 @@
                             $phone = $_POST['phone'];
                             $email = $_POST['email'];
 
-                            if (mysqli_query($con,"UPDATE `tbl_users` SET `fname`='$fname',`lname`='$lname',`phoneNumber`='$phone' WHERE uid='$hod_ID'")) {
+                            if (mysqli_query($con,"UPDATE `tbl_users` SET `fname`='$fname',`lname`='$lname',`email`='$email',`phoneNumber`='$phone' WHERE uid='$hod_ID'")) {
                                 $msg = "Edited";
                             }else {
                                 $error = "not edited";

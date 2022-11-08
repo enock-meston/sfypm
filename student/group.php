@@ -8,10 +8,12 @@ if (strlen($_SESSION['sID']) == 0) {
 
     if ($_GET['reque']) {
         $studentID = $_GET['reque'];
-        $me = $_SESSION['sID'];
+        $me = $_SESSION['sID'];  
+
         $checkStudent = mysqli_query($con,"SELECT * FROM `tbl_group` WHERE 
-        (`studentOne` = '$studentID' OR `studentTwo` ='$studentID' OR 
-        `studentOne` = '$me' OR `studentTwo` ='$me') AND status='1'");
+        (`studentOne` = '$studentID' OR `studentTwo` ='$studentID') OR 
+        (`studentOne` = '$me' OR `studentTwo` ='$me') OR `studentTwo` ='$me' OR `studentTwo` ='$studentID' OR 
+        `studentOne` = '$studentID' OR `studentOne` = '$me' AND status='1'");
 
         $result = mysqli_num_rows($checkStudent);
         if ($result > 0) {

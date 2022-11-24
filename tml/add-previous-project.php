@@ -12,21 +12,42 @@ if (strlen($_SESSION['tml_email']) == 0) {
 
     if (isset($_POST['saveproject'])) {
         $title = $_POST['title'];
-        $owner = $_POST['owner'];
-        $status = '2';
+        $ownerOne = $_POST['ownerone'];
+        $ownerTwo = $_POST['ownertwo'];
+        $AcademicYear = $_POST['academicyear'];
+        $supervisor = $_POST['supervisor'];
+       
+
+              // images
+        $img_name = $_FILES['file']['name'];
+        $img_size = $_FILES['file']['size'];
+        $tmp_name = $_FILES['file']['tmp_name'];
+        $error = $_FILES['file']['error'];
+
+        $status = '1';
         $sql = mysqli_query($con,"SELECT * FROM `tblprojectcanvas` WHERE title='$title'");
         $result = mysqli_num_rows($sql);
 
         if ($result > 0) {
             $error = "project tilte is already In! try another one.";
         }else {
-            $query = mysqli_query($con,"INSERT INTO `tblprojectcanvas`(`groupNumber`, `title`,
-            `Status`) VALUES ('$owner','$title','$status')");
+            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+            $img_ex_lc = strtolower($img_ex);
+            $new_img_name = uniqid("FILE-", true).$title.'.'.$img_ex_lc;
+            $img_upload_path = 'pdfBooks/'.$new_img_name;
+
+            if (move_uploaded_file($tmp_name, $img_upload_path)) {
+            $query = mysqli_query($con,"INSERT INTO `tbl_projectbook`(`title`, `owner_One`, 
+            `Owner_two`, `AccademicYear`, `SuperVisorName`, `bookPath`,`status`) VALUES 
+            ('$title','$ownerOne','$ownerTwo','$AcademicYear','$supervisor','$img_upload_path','$status')");
             if ($query) {
                 $msg ="Project is now Added !";
             } else {
                 $error = "There is Error in Query !";
             }
+        }else {
+            $error ="Not uploaded!";
+         }
             
         }
     }
@@ -124,21 +145,29 @@ if (strlen($_SESSION['tml_email']) == 0) {
                                         <tr>
                                             <th>N0</th>
                                             <th>Title</th>
-                                            <th>Project Owner</th>
+                                            <th>Student One</th>
+                                            <th>Student Two</th>
+                                            <th>Academic Year</th>
+                                            <th>SuperVisor Name</th>
+                                            <th>Book</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>N0</th>
                                             <th>Title</th>
-                                            <th>Project Owner</th>
+                                            <th>Student One</th>
+                                            <th>Student Two</th>
+                                            <th>Academic Year</th>
+                                            <th>SuperVisor Name</th>
+                                            <th>Book</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
 
                                         <tr>
                                             <?php 
-                                            $query = mysqli_query($con,"SELECT * FROM `tblprojectcanvas` WHERE Status=2");
+                                            $query = mysqli_query($con,"SELECT * FROM `tbl_ProjectBook` WHERE Status=1");
                                             if (mysqli_num_rows($query)<=0) {
                                                 ?>
                                             <h1 style="color: red;">No data Founds !</h1>
@@ -147,12 +176,23 @@ if (strlen($_SESSION['tml_email']) == 0) {
                                               
                                             $number=1;
                                                 while ($row1 = mysqli_fetch_array($query)) {
-                                                     
+                                                       
                                         
                                         ?>
                                             <td><?php echo $number;?></td>
                                             <td><?php echo $row1['title'];?></td>
-                                            <td><?php echo $row1['groupNumber'];?></td>
+                                            <td><?php echo $row1['owner_One'];?></td>
+                                            <td><?php echo $row1['Owner_two'];?></td>
+                                            <td><?php echo $row1['AccademicYear'];?></td>
+                                            <td><?php echo $row1['SuperVisorName'];?></td>
+                                            <td>
+                                            
+                                                <?php 
+                                                $link =$row1['bookPath'];
+                                                ?>
+                                                
+                                                <a href="<?php print $link; ?>" class="btn-outline-success px-10"><i class="fas fa-fw fa-download"></i></td>
+                                                </td>
                                         </tr>
                                         <?php
                                        $number+=1;
@@ -205,17 +245,34 @@ if (strlen($_SESSION['tml_email']) == 0) {
                         <div class="card-body">
                             <div class="table-responsive">
                                 <!-- form of adding Categories -->
-                                <form action="" method="POST">
+                                <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <input type="text" name="title" required class="form-control form-control-user"
                                             id="exampleInputEmail" placeholder="Project Title">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="owner" required class="form-control form-control-user"
-                                            id="exampleInputEmail" placeholder="Project Owner">
+                                        <input type="text" name="ownerone" required class="form-control form-control-user"
+                                            id="exampleInputEmail" placeholder="Student One">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="ownertwo" required class="form-control form-control-user"
+                                            id="exampleInputEmail" placeholder="Student Two">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="academicyear" required class="form-control form-control-user"
+                                            id="exampleInputEmail" placeholder="Academic Year Examle: 2019-2020">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="supervisor" required class="form-control form-control-user"
+                                            id="exampleInputEmail" placeholder="Supervisor's Name Owner">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""> upload pdf file only accepted <sup> <span style="color:red;">*</span></sup></label>
+                                        <input type="file" name="file" required class="form-control form-control-user" accept=".pdf">
                                     </div>
 
                                     <div class="form-group">
+                                        
                                         <input type="submit" class="btn btn-primary" value="save" name="saveproject">
                                     </div>
                                 </form>

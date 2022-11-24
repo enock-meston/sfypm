@@ -40,6 +40,7 @@
             <a class="collapse-item" href="add-previous-project.php" title="Add  and approve Project">Prevoius Project</a>
             <a class="collapse-item" href="pending-project.php" title="View Pending">Pending Project</a>
             <a class="collapse-item" href="approved-project.php" title="View Approved">Approved Project</a>
+            <a class="collapse-item" href="approved-project.php" title="View accept with condition ">Accept with condition Proje</a>
         
         </div>
     </div>

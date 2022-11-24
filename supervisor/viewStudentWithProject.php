@@ -63,7 +63,7 @@ if (strlen($_SESSION['super_email']) == 0) {
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <h4>
-                       My Students And Their Projects Ideas
+                        My Students And Their Projects Ideas
                     </h4>
 
                     <!-- /.container-fluid -->
@@ -75,36 +75,53 @@ if (strlen($_SESSION['super_email']) == 0) {
                     <!--USERS  tables -->
                     <!-- DataTales Example -->
                     <div class="card shadow mb-12">
+
                         <div class="card-header py-12">
                             <h6 class="m-0 font-weight-bold text-primary"> Student Thier And Project Ideas</h6>
                         </div>
                         <div class="card-body">
-                            <?php
-                            $supervisorID = $_SESSION['super_id'];
-                                $Project_Student = mysqli_query($con,"SELECT * FROM tbl_group,tblprojectcanvas WHERE 
-                                tbl_group.groupNumber = tblprojectcanvas.groupNumber AND 
-                                tbl_group.superVisorID='$supervisorID'");
-                                while ($rowData = mysqli_fetch_array($Project_Student)) {
-                            ?>
+                            <div class="row">
+                                <?php
+                                    $supervisorID = $_SESSION['super_id'];
+                                        $Project_Student = mysqli_query($con,"SELECT tbl_students.sID as sID, 
+                                        tbl_students.fname as stfname,tbl_students.lname as stlname,
+                                        tbl_students.reg_number as reg_number,tbl_students.email as stemail,
+                                        tbl_students.phoneNumber as stPhone,tbl_group.groupNumber as groupNumber,
+                                        tblprojectcanvas.title as title FROM tblprojectcanvas,tbl_group,tbl_students 
+                                        WHERE tbl_group.superVisorID ='$supervisorID' AND tbl_group.groupNumber = tblprojectcanvas.groupNumber 
+                                        AND (tbl_students.sID=tbl_group.studentOne OR tbl_students.sID=tbl_group.studentTwo);");
+                                        $count=1;
+                                        while ($rowData = mysqli_fetch_array($Project_Student)) {
+                                            
+                                ?>
 
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    Group Code: <?php echo $rowData['groupNumber'];?>
-                                   
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <?php echo "No <b>". $count ."</b> :";?>
+                                        Student Name :
+                                        <b><?php echo $rowData['stfname'] ."  ".$rowData['stlname'] ; ?></b><br>
+                                        <hr>
+                                        Project Title: <b> <?php echo $rowData['title']; ?></b>
+                                    </div>
+                                    <div class="card-body">
+                                        Has Group Code: <b> <?php echo $rowData['groupNumber'];?></b><br>
+                                        Student email : <b><?php echo $rowData['stemail'];?></b><br>
+                                        Student Phone Number: <b> <?php echo $rowData['stPhone'];?></b><br>
+                                        Student Reg Number: <b> <?php echo $rowData['reg_number'];?></b><br>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                   Project Title: <?php echo $rowData['title']; ?>
-                                </div>
+
+                                <?php
+                                    $count +=1;
+                                        }
+                                        
+                                    ?>
                             </div>
+                            <!--end mesages  tables -->
 
-                            <?php
-                                }
-                            ?>
                         </div>
-                        <!--end mesages  tables -->
 
                     </div>
-
                 </div>
                 <!-- End of Main Content -->
 

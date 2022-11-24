@@ -24,7 +24,9 @@ if (strlen($_SESSION['sID']) == 0) {
             $groupNumber =date('i').rand(1000,9999);
             if (mysqli_query($con,"INSERT INTO `tbl_group`(`groupNumber`, `studentOne`, `studentTwo`,`status`) 
             VALUES ('$groupNumber','$studentID','".$_SESSION['sID']."','1')")) {
+                mysqli_query($con,"UPDATE `tbl_students` SET `groupStatsu`='yes' WHERE `sID` = '$studentID' AND `sID` = '".$_SESSION['sID']."''");
                 $msg = "Now Your Request Sent";
+                
             } else {
                 $error ="Query Problem";
             }
@@ -122,13 +124,13 @@ if (strlen($_SESSION['sID']) == 0) {
                                 <td><?php echo $row['fname'] ." - ". $row['lname'];?></td>
                                 <td><?php echo $row['reg_number']; ?></td>
                             </tr>
-                        
-                        <?php
+
+                            <?php
                         }
                     ?>
-                    </table>
+                        </table>
                     </center>
-<hr>
+                    <hr>
 
                     <h4>Student List</h4>
                     <form method="POST">
@@ -176,8 +178,8 @@ if (strlen($_SESSION['sID']) == 0) {
                               
                             
                             $selectRoom= mysqli_query($con,"SELECT * FROM `tbl_students` 
-                            WHERE fname LIKE '%$student%' OR lname LIKE '%$student%' OR 
-                            reg_number LIKE '%$student%' AND status='1'");
+                            WHERE (fname LIKE '%$student%' OR lname LIKE '%$student%' OR 
+                            reg_number LIKE '%$student%') AND (status='1' AND groupStatsu != 'yes')");
 
                             while ($row=mysqli_fetch_array($selectRoom)) {
                             
@@ -206,9 +208,14 @@ if (strlen($_SESSION['sID']) == 0) {
                         <?php 
                                 } 
                             }else {
+
+                                // $sql_check_id = mysqli_query($con,"SELECT tbl_students.fname as stuFname,tbl_students.lname as stuLname,tbl_students.reg_number as stuRegNumber FROM tbl_group LEFT JOIN tbl_students ON 
+                                // tbl_group.studentOne = tbl_students.sID OR tbl_group.studentTwo = tbl_students.sID");
+                                
+                                // 
                                 $selectRoom= mysqli_query($con,"SELECT * FROM `tbl_students` 
-                            WHERE fname LIKE '%$student%' OR lname LIKE '%$student%' OR 
-                            reg_number LIKE '%$student%' AND status='1'");
+                            WHERE (fname LIKE '%$student%' OR lname LIKE '%$student%' OR 
+                            reg_number LIKE '%$student%') AND (status='1' AND groupStatsu != 'yes')");
 
                             while ($row=mysqli_fetch_array($selectRoom)) {
                             

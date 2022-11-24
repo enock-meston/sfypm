@@ -7,21 +7,24 @@ include('../include/config.php');
 if (isset($_POST['loginbtn'])) {
 
     $email = trim($_POST['email']);
-    $password = $_POST['password'];
-    $hashespas = password_hash($password, PASSWORD_BCRYPT);
+    $current_password = $_POST['current_password'];
+    $new_password = $_POST['new_password'];
+
+    $newhashespassword = password_hash($new_password, PASSWORD_BCRYPT);
+    
     $select = mysqli_query($con, "SELECT * FROM tbl_students WHERE (email='$email' OR `reg_number`='$email') AND status='1'") or die(mysqli_error($con));
 
-        if (mysqli_num_rows($select) ==1) {
+        if (mysqli_num_rows($select) >=1) {
             $row = mysqli_fetch_array($select);
             $db_password = $row['password'];
-        if (password_verify(mysqli_real_escape_string($con, trim($_POST['password'])), $db_password)) {
-            $_SESSION['sID'] = $row['sID'];
-            $_SESSION['firstname'] = $row['fname'];
-            $_SESSION['lastname'] = $row['lname'];
-            $_SESSION['phonenumber'] = $row['phoneNumber'];
-            $_SESSION['reg_number'] = $row['reg_number'];
-            $_SESSION['email'] = $row['email'];
-            header("location: dashboard.php");
+        if (password_verify(mysqli_real_escape_string($con, trim($_POST['current_password'])), $db_password)) {
+            
+            $sqlUpdate = mysqli_query($con,"UPDATE `tbl_students` SET `password`='$newhashespassword' WHERE email = '$email'");
+            if ($sqlUpdate) {
+                $msg = "Password was been Changed !";
+            }else {
+                $error = "There something went Wrong!";
+            }
         }else {
             $error = "Password does not match with any of account , Please try again later!!";
         }
@@ -104,24 +107,27 @@ if (isset($_POST['loginbtn'])) {
                                                 placeholder="Enter Email or Reg. Number">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password"
+                                            <input type="password" name="current_password"
                                                 class="form-control form-control-user" id="exampleInputPassword"
-                                                placeholder="Password">
+                                                placeholder="Current Password">
+                                        </div>
+
+                                        
+                                        <div class="form-group">
+                                            <input type="password" name="new_password"
+                                                class="form-control form-control-user" id="exampleInputPassword"
+                                                placeholder="New - Password">
                                         </div>
 
                                         <div class="form-group">
                                             <input type="submit" class="form-control btn btn-primary" name="loginbtn"
-                                                value="Login">
+                                                value="Save">
                                         </div>
 
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="change-password.php">Change Password</a>
-                                    </div>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="../index.php">Back to Home</a>
+                                        <a class="small" href="index.php">Back to Login Page</a>
                                     </div>
                                 </div>
                             </div>

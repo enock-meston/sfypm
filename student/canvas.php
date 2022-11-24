@@ -155,23 +155,23 @@ if (strlen($_SESSION['sID']) == 0) {
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <tr>
                                             <th>Problem
-                                                <textarea name="Problem" class="form-control" id="form4Example3"
+                                                <textarea name="Problem" required class="form-control" id="form4Example3"
                                                     rows="4"></textarea>
                                             </th>
                                             <th>Solution
-                                                <textarea name="Solution" class="form-control" id="form4Example3"
+                                                <textarea name="Solution" required class="form-control" id="form4Example3"
                                                     rows="4"></textarea>
                                             </th>
                                             <th>Unique Value Proposition
-                                                <textarea name="UniqueValueProposition" class="form-control"
+                                                <textarea name="UniqueValueProposition" required class="form-control"
                                                     id="form4Example3" rows="4"></textarea>
                                             </th>
                                             <th>Unfair Advantage
-                                                <textarea name="UnfairAdvantage" class="form-control" id="form4Example3"
+                                                <textarea name="UnfairAdvantage"required class="form-control" id="form4Example3"
                                                     rows="4"></textarea>
                                             </th>
                                             <th>Customer Segments
-                                                <textarea name="CustomerSegments" class="form-control"
+                                                <textarea name="CustomerSegments" required class="form-control"
                                                     id="form4Example3" rows="4"></textarea>
                                             </th>
 
@@ -179,32 +179,32 @@ if (strlen($_SESSION['sID']) == 0) {
                                         <tr>
                                             <td>Existing Alternatives
                                                 <textarea name="ExistingAlternatives" class="form-control"
-                                                    id="form4Example3" rows="4"></textarea>
+                                                    id="form4Example3" required rows="4"></textarea>
                                             </td>
                                             <td>Key Metrics
-                                                <textarea name="KeyMetrics" class="form-control" id="form4Example3"
+                                                <textarea name="KeyMetrics" required class="form-control" id="form4Example3"
                                                     rows="4"></textarea>
                                             </td>
                                             <td>High-Level Concept
-                                                <textarea name="HighLevelConcept" class="form-control"
+                                                <textarea name="HighLevelConcept" required class="form-control"
                                                     id="form4Example3" rows="4"></textarea>
                                             </td>
                                             <td>Channels
-                                                <textarea name="Channels" class="form-control" id="form4Example3"
+                                                <textarea name="Channels" required class="form-control" id="form4Example3"
                                                     rows="4"></textarea>
                                             </td>
                                             <td>Early Adopters
-                                                <textarea name="EarlyAdopters" class="form-control" id="form4Example3"
+                                                <textarea name="EarlyAdopters" required class="form-control" id="form4Example3"
                                                     rows="4"></textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Cost Structure
-                                                <textarea name="CostStructure" class="form-control" id="form4Example3"
+                                                <textarea name="CostStructure" required class="form-control" id="form4Example3"
                                                     rows="4"></textarea>
                                             </td>
                                             <td>Revenue Structure
-                                                <textarea name="RevenueStructure" class="form-control"
+                                                <textarea name="RevenueStructure" required class="form-control"
                                                     id="form4Example3" rows="4"></textarea>
                                             </td>
                                             <td>

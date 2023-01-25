@@ -15,3 +15,6 @@ status
 1 = pending 
 2 = approved
 0 = rejicted
+ 
+
+ i added new field(column) in table od tbl_users called dept

@@ -24,6 +24,7 @@ if (isset($_POST['loginbtn'])) {
             $_SESSION['phonenumber'] = $row['phoneNumber'];
             $_SESSION['type'] = $row['userType'];
             $_SESSION['email'] = $row['email'];
+            $_SESSION['dept'] = $row['dept'];
             header("location: hod/dashboard.php");
         }else {
             $error = "Password does not match with any of account , Please try again later!!";
@@ -49,7 +50,26 @@ if (isset($_POST['loginbtn'])) {
     }else {
         $error = "Invalid user credintials , Please try again later!!";
     }
-    }elseif ($_POST['type'] == "super") {
+    }elseif ($_POST['type'] == "sadmin") {
+        if (mysqli_num_rows($select) ==1) {
+            $row = mysqli_fetch_array($select);
+            $db_password = $row['password'];
+        if (password_verify(mysqli_real_escape_string($con, trim($_POST['password'])), $db_password)) {
+            $_SESSION['sadmin_id'] = $row['uid'];
+            $_SESSION['sadmin_firstname'] = $row['fname'];
+            $_SESSION['sadmin_lastname'] = $row['lname'];
+            $_SESSION['sadmin_phonenumber'] = $row['phoneNumber'];
+            $_SESSION['sadmin_type'] = $row['userType'];
+            $_SESSION['sadmin_email'] = $row['email'];
+            header("location: sadmin/dashboard.php");
+            }else {
+                $error = "Password does not match with any of account , Please try again later!!";
+            }
+        }else {
+            $error = "Invalid user credintials , Please try again later!!";
+        }
+    }
+    elseif ($_POST['type'] == "super") {
     if (mysqli_num_rows($select) ==1) {
         $row = mysqli_fetch_array($select);
         $db_password = $row['password'];
@@ -143,6 +163,7 @@ if (isset($_POST['loginbtn'])) {
                                         <div class="form-group">
                                             <select name="type" id="" class="form-control">
                                                 <option>Select your Type</option>
+                                                <option value="sadmin">Sys. Admin</option>
                                                 <option value="hod">HOD</option>
                                                 <option value="tml">Team Leader</option>
                                                 <option value="super">SUPERVISOR</option>

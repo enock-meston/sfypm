@@ -40,6 +40,7 @@
             <a class="collapse-item" href="user.php" title="Add  and View user">User</a>
             <a class="collapse-item" href="student.php" title="Add and View Student">Student</a>
             <a class="collapse-item" href="groups.php" title="Assign groups to Supervisor">Groups</a>
+            <a class="collapse-item" href="viewStudentWithProject.php" title="Student && Their Project">Student && Project</a>
         </div>
     </div>
 </li>

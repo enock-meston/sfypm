@@ -24,24 +24,22 @@
 
 <!-- Heading -->
 <div class="sidebar-heading">
-    Pachages
+    Actions
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
         aria-expanded="true" aria-controls="collapseThree">
-        <i class="fas fa-fw fa-list"></i>
-        <span>Action</span>
+        <i class="fas fa-fw fa-plus"></i>
+        <span>User</span>
     </a>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Customization</h6>
-            <a class="collapse-item" href="add-previous-project.php" title="Add  and approve Project">Prevoius Project</a>
-            <a class="collapse-item" href="pending-project.php" title="View Pending">Pending Project</a>
-            <a class="collapse-item" href="approved-project.php" title="View Approved">Approved Project</a>
-            <a class="collapse-item" href="acceptWithCondtion.php" title="View accept with condition ">Accept with condition Proje</a>
-        
+            <a class="collapse-item" href="user.php" title="Add  and View user">HODs</a>
+            <!-- <a class="collapse-item" href="student.php" title="Add and View Student">Student</a>
+            <a class="collapse-item" href="groups.php" title="Assign groups to Supervisor">Groups</a> -->
         </div>
     </div>
 </li>

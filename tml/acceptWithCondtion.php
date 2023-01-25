@@ -34,7 +34,7 @@ if (strlen($_SESSION['tml_email']) == 0) {
 
     if ($_GET['appr']) {
        $id = $_GET['appr'];
-       $aproveQuery= mysqli_query($con,"UPDATE `tblprojectcanvas` SET `Status`='2' WHERE cid ='$id'");
+       $aproveQuery= mysqli_query($con,"UPDATE `tblprojectcanvas` SET `Status`='1' WHERE cid ='$id'");
        if ($aproveQuery) {
         $msg = "approved";
        } else {
@@ -56,7 +56,7 @@ if (strlen($_SESSION['tml_email']) == 0) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pending</title>
+    <title>Approved</title>
 
     <!-- Custom fonts for this template-->
     <link href="../plugins/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -95,7 +95,7 @@ if (strlen($_SESSION['tml_email']) == 0) {
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h4>
-                            Pending Project's Page
+                            Approved Project's Page
                         </h4>
                     </div>
                     <!-- /.container-fluid -->
@@ -117,19 +117,19 @@ if (strlen($_SESSION['tml_email']) == 0) {
                             <?php } ?>
                         </div>
                     </div>
-                    <!-- 
+
                     <div class="row">
                         <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#CategoryModal">Add <i
                                 class="fas fa-fw fa-plus"></i></a>
-                    </div> -->
+                    </div>
                     <hr>
-                    <h4> Pending PROJECT LIST</h4>
+                    <h4> Approved PROJECT LIST</h4>
                     <!--PROJECT  tables -->
                     <!-- DataTales Example -->
 
                     <div class="card shadow col-sm-12">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"> Pending Projects</h6>
+                            <h6 class="m-0 font-weight-bold text-primary"> Approved Projects</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -154,7 +154,7 @@ if (strlen($_SESSION['tml_email']) == 0) {
 
                                         <tr>
                                             <?php 
-                                            $query = mysqli_query($con,"SELECT * FROM `tblprojectcanvas` WHERE Status=1 OR Status=0");
+                                            $query = mysqli_query($con,"SELECT * FROM `tblprojectcanvas` WHERE Status=2");
                                             if (mysqli_num_rows($query)<=0) {
                                                 ?>
                                             <h1 style="color: red;">No data Founds !</h1>
@@ -173,13 +173,7 @@ if (strlen($_SESSION['tml_email']) == 0) {
                                                 <a href="viewOne.php?on=<?php echo $row1['cid'] ;?>"
                                                     class="badge badge-secondary"> <i class='fas fa-eye'
                                                         style='font-size:20px;color:red'></i> view</a>
-                                                <a href="pending-project.php?appr=<?php echo $row1['cid'] ;?>"
-                                                    class="badge badge-success">approve</a>
-                                                <a href="reject.php?rej=<?php echo $row1['cid'] ;?>"
-                                                    class="badge badge-danger">reject</a>
-
-                                                <a href="accept.php?idd=<?php echo $row1['cid'] ;?>" class="dataInfo badge badge-info">Accept
-                                                    with Condtion</a>
+                                              
                                             </td>
                                         </tr>
                                         <?php
@@ -200,43 +194,6 @@ if (strlen($_SESSION['tml_email']) == 0) {
                 </div>
                 <!-- End of Main Content -->
 
-                <!-- modal -->
-                <script>
-                $(document).ready(function() {
-                    $('#AddParticipantModal').on('show.bs.modal', function(e) {
-                        var rowid = $(e.relatedTarget).data('cid');
-
-                        $.ajax({
-                            type: 'post',
-                            url: 'Accept.php', //Here you will fetch records 
-                            data: 'rowid=' + rowid, //Pass $id
-                            success: function(data) {
-                                $('.fetched-data-AddComment').html(
-                                    data); //Show fetched data from database
-                            }
-                        });
-                    });
-                });
-                // all
-                </script>
-
-                <!-- Modal -->
-                <div class="modal fade" id="AddParticipantModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header bg-primary">
-              <h4 class="modal-title">Make Comment</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>          
-            <div class="modal-body">
-            
-      <div class="fetched-data-AddParticipant"></div> 
-            </div>
-          </div>
-          </div>
-        </div> 
                 <!-- Footer -->
                 <?php 
                 include 'include/footer.php';
